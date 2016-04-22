@@ -1,0 +1,79 @@
+body {
+	font family: sans-serif;
+	}
+	
+		#wrapper {
+		    position:absolute
+		    width: 100%;
+		    margin: 15px auto;
+		}
+		#map {
+			height: 95vh;
+			margin: 15px auto;
+		}
+		.legend, .temporal-legend {
+				padding: 6px 10px;
+				font: 14px/16px Arial, Helvetica, sans-serif;
+				background: white;
+				background: rgba(255,255,255,0.8);
+				box-shadow: 0 0 15px rgba(0,0,0,0.2);
+				border-radius: 5px;
+		}
+		#legendTitle {
+				text-align: center;
+				margin-bottom: 15px;
+				font-variant: small-caps;
+		}
+		
+		.symbolsContainer {
+				float: left;
+				margin-left: 50px;
+		}
+		.legendCircle {
+				border-radius: 50%;
+				border: 1px solid #38483D;
+				background: rgba(95, 174, 65, 0.6);
+						display: inline-block;
+		}
+		
+		.legendValue {
+				position: absolute;
+				right 8px;
+		}
+		
+		#showcase {
+			margin: 0 20px;
+			text-align: center;
+}
+		.range-slider {
+			height: 20px;
+			margin: 5px 50px 50px;
+			width: 80%;
+  			-webkit-appearance: none !important;
+  			border-radius: 5px;
+  			background:-webkit-gradient(linear,center top, center bottom, from(#CFDCDD),to(#DFE9EA),color-stop(50%,#DFE9EA));
+			-webkit-transition: background 450ms;
+ 			transition: background 450ms;
+		}
+		
+.touch {
+    width: 80%;
+}
+
+.custom {
+  
+
+}
+
+/* Change the Slider Button Color Here */
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background:#ed1c24;
+    height:40px;
+    width:40px;
+    border-radius: 15px;
+}
+
+.custom::-webkit-slider-thumb:before {
+  background-color: yellow;
+}
