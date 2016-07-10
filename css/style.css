@@ -23,22 +23,25 @@ body {
 				text-align: center;
 				margin-bottom: 15px;
 				font-variant: small-caps;
+				width: 225px;
 		}
 		
 		.symbolsContainer {
 				float: left;
-				margin-left: 50px;
+				margin-left: 100px;
 		}
 		.legendCircle {
-				border-radius: 50%;
-				border: 1px solid #38483D;
-				background: rgba(95, 174, 65, 0.6);
+				border-radius: 100%;
+				border: 1.5px solid #38483D;
+				background: rgba(95, 174, 65, 0.4);
 						display: inline-block;
 		}
 		
 		.legendValue {
 				position: absolute;
-				right 8px;
+				font: 14px Arial, Helvetica, sans-serif;
+				font-weight:bold;
+				right: 25px;
 		}
 		
 		#showcase {
@@ -48,7 +51,7 @@ body {
 		.range-slider {
 			height: 20px;
 			margin: 5px 50px 50px;
-			width: 80%;
+			width: 200%;
   			-webkit-appearance: none !important;
   			border-radius: 5px;
   			background:-webkit-gradient(linear,center top, center bottom, from(#CFDCDD),to(#DFE9EA),color-stop(50%,#DFE9EA));
