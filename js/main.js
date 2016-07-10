@@ -30,7 +30,7 @@ $(document).ready(function() {
 	// geojson converted using http://www.convertcsv.com/csv-to-geojson.htm
 	$.getJSON('data/countries.geojson')
 			.done(function(data) {
-//					console.log(data);
+//				console.log(data);
 					var info = processData(data);
 					createPropSymbols(info.timestamps, data);
 					createLegend(info.min,info.max);
@@ -86,7 +86,7 @@ $(document).ready(function() {
 						return L.circleMarker(latlng, {
 								fillColor: '#5fae41',
 								color: '#38483D',//'#519437',
-								weight: 1,
+								weight: 2,
 								fillOpacity: 0.6
 								}).on({
 									
@@ -126,21 +126,21 @@ $(document).ready(function() {
 	
 	function calcPropRadius(attributeValue) {
 			
-			var scaleFactor = 200; //changes relative size of circles
+			var scaleFactor = 300; //changes relative size of circles
 			var area = attributeValue * scaleFactor;
 			return Math.sqrt(area/Math.PI)*2;
 	} // end calcPropRadius()
 	
 	function createLegend(min, max) {
 	
-			if (min < 10) {
-					min = 10;
+			if (min < 1) {
+					min = 1;
 			}
-	
-			function roundNumber(inNumber) {
-					
-							return (Math.round(inNumber/5) * 5);
-			} //end roundNumber, function rounds value to the nearest increment of 10
+// 	
+// 			function roundNumber(inNumber) {
+// 					
+// 							return (Math.round(inNumber/10) * 5);
+// 			} //end roundNumber, function rounds value to the nearest increment of 10
 			
 			var legend = L.control( { position: 'bottomright' } );
 			
@@ -148,7 +148,7 @@ $(document).ready(function() {
 			
 			var legendContainer = L.DomUtil.create('div', 'legend');
 			var symbolsContainer = L.DomUtil.create('div', 'symbolsContainer');
-			var classes = [6, 3, 1]//[roundNumber(min), roundNumber((min-max)/2) ,roundNumber(max)];
+			var classes = [min, (max-min)/2, max];//[roundNumber(min), roundNumber((min-max)/2) ,roundNumber(max)];
 			var legendCircle;
 			var lastRadius = 0;
 			var currentRadius;
@@ -160,13 +160,13 @@ $(document).ready(function() {
 			
 			$(legendContainer).append("<h2 id='legendTitle'># of treaties signed</h2>");
 			
-			for (var i = 0; i<= classes.length-1; i++) {
+			for (var i = 0; i <= classes.length-1; i++) {
 			
 					legendCircle = L.DomUtil.create('div', 'legendCircle');
 					
 					currentRadius = calcPropRadius(classes[i]);
 					
-					margin = -currentRadius - lastRadius - 2;
+					margin = -currentRadius-lastRadius-2;
 					
 					$(legendCircle).attr('style', 'width: '+ currentRadius*2 +
 							'px; height: ' + currentRadius*2 +
@@ -208,10 +208,10 @@ $(document).ready(function() {
 				
 					$(slider)
 							.attr({'type':'range',
-									'max': timestamps[2],//[timestamps.length-1], 
+									'max': timestamps[26],//[timestamps.length-1], 
 									'min': timestamps[0],
 									'value': String(timestamps[0]),
-									'step': 10}) //possible change this to 10
+									'step': 5}) //possible change this to 10
 							.on('input change', function() {
 							updatePropSymbols($(this).val().toString() );
 								$('.temporal-legend').text(this.value);	
